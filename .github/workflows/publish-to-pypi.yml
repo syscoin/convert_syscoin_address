@@ -9,7 +9,7 @@ on:
 
 permissions:
   contents: read
-  id-token: write # Needed for trusted publishing
+  # id-token: write # No longer needed when using API tokens
 
 jobs:
   build:
