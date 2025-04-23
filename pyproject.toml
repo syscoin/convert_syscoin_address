@@ -10,13 +10,10 @@ authors = [
 ]
 description = "Converts Syscoin addresses between legacy P2PKH (S...) and SegWit v0 P2WPKH (sys1q...)."
 readme = "README.md"
-# license = { text="MIT" }
-license = "MIT"
-license-files = ["LICENSE"]
+license = { text="MIT" }
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Utilities",
