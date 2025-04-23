@@ -6,7 +6,7 @@ A simple utility for converting between legacy Syscoin P2PKH address format (Bas
 *   Legacy P2PKH (starts with 'S') <---> SegWit v0 P2WPKH (starts with 'sys1q')
 
 **Unsupported Conversions:**
-*   Conversion involving legacy P2SH addresses (starting with 'T') is **not supported** due to the ambiguity in determining the original SegWit script type from the P2SH hash.
+*   Conversion involving legacy P2SH addresses is **not supported** due to the ambiguity in determining the original SegWit script type from the P2SH hash.
 *   This tool **does not** support conversion to or from Taproot (SegWit v1 / P2TR) addresses (starting with 'sys1p'). It will raise an error if a Taproot address is provided.
 
 This tool helps bridge the gap created by the removal of the `convertaddress` RPC call in Syscoin Core, primarily for systems needing to handle both legacy P2PKH and standard SegWit v0 P2WPKH addresses.
@@ -107,7 +107,7 @@ This tool uses the `base58` library for Base58Check decoding/encoding and includ
 
 It uses the following Syscoin mainnet parameters:
 *   Legacy P2PKH Prefix: `63` (Addresses usually start with 'S')
-*   Legacy P2SH Prefix: `5` (Addresses usually start with 'T', **conversion not supported**)
+*   Legacy P2SH Prefix: `5` (**conversion not supported**)
 *   Bech32 HRP: `sys`
     *   SegWit v0 addresses (P2WPKH) start with `sys1q`.
     *   SegWit v1 addresses (Taproot/P2TR) start with `sys1p` (**conversion not supported**).
