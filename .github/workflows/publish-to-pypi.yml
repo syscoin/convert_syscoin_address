@@ -34,6 +34,22 @@ jobs:
     - name: Build package
       run: python -m build
 
+    - name: List contents of dist/
+      run: ls -l dist/
+
+    # Inspect the METADATA file within the generated wheel
+    - name: Inspect Wheel Metadata
+      run: |
+        WHEEL_FILE=$(find dist/ -name '*.whl')
+        unzip -p "$WHEEL_FILE" "*.dist-info/METADATA" || echo "METADATA file not found in wheel"
+
+    # Inspect the PKG-INFO file within the generated sdist (tar.gz)
+    - name: Inspect Sdist PKG-INFO
+      run: |
+        SDIST_FILE=$(find dist/ -name '*.tar.gz')
+        # Extract only the PKG-INFO file to stdout
+        tar -xOzf "$SDIST_FILE" "*/PKG-INFO" 2>/dev/null || echo "PKG-INFO file not found in sdist"
+
     - name: Store the distribution packages
       uses: actions/upload-artifact@v4
       with:
