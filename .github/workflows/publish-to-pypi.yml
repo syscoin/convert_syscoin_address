@@ -60,7 +60,7 @@ jobs:
         # Requires configuring trusted publishers in TestPyPI project settings
         # https://docs.pypi.org/trusted-publishers/
         # Alternatively, use a token:
-        # password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
 
   publish-to-pypi:
     name: Publish to PyPI
@@ -85,5 +85,5 @@ jobs:
       # Requires configuring trusted publishers in PyPI project settings
       # https://docs.pypi.org/trusted-publishers/
       # Alternatively, use a token:
-      # with:
-      #   password: ${{ secrets.PYPI_API_TOKEN }} 
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }} 
