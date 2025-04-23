@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "syscoin-address-converter"
+version = "0.1.0"
+authors = [
+  # { name="Jagdeep Sidhu", email="sidhujag@syscoin.org" },
+]
+description = "Converts Syscoin addresses between legacy P2PKH (S...) and SegWit v0 P2WPKH (sys1q...)."
+readme = "README.md"
+license = { text="MIT" }
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "base58",
+]
+
+# Define how the package includes Python modules
+[tool.setuptools.packages.find]
+where = ["./"]  # Root directory contains the modules
+include = ["converter", "bech32_ref"] # Include both modules
+
+# Define the command-line script entry point
+[project.scripts]
+syscoin-convert = "converter:main" 

@@ -77,15 +77,16 @@ def convert_syscoin_address(address):
     except ValueError as base58_decode_error:
          raise InvalidAddressError(f"Invalid address: Not valid Base58 ({base58_decode_error}) or supported Bech32 HRP '{SYSCOIN_BECH32_HRP}'")
 
-# --- CLI part remains the same ---
-if __name__ == "__main__":
+def main():
+    # --- CLI part moved into main() function ---
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Convert a Syscoin address between legacy (Base58) and segwit v0 (Bech32) formats."
+        description="Convert a Syscoin address between legacy P2PKH (S...) and segwit v0 P2WPKH (sys1q...)."
     )
     parser.add_argument("address", help="The Syscoin address to convert.")
 
+    # Use sys.argv directly for checking length before parsing
     if len(sys.argv) == 1:
         parser.print_help(sys.stderr)
         sys.exit(1)
@@ -107,3 +108,7 @@ if __name__ == "__main__":
         print(f"An unexpected error occurred: {e}", file=sys.stderr)
         print(f"Details: {type(e)}", file=sys.stderr)
         sys.exit(1)
+
+# Keep the standard boilerplate to run main() when script is executed directly
+if __name__ == "__main__":
+    main()
